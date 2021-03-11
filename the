@@ -1,0 +1,39 @@
+"""
+program goals:
+1. Get the input form the user
+2. covert the input into an INT
+3. add that input to a list
+4. pull values form specific index position
+"""
+
+#create function that will preform those actions above
+import random 
+mylist = []
+def mainprogram():
+    while True:
+        print("hows about we work with those fancy list things.")
+        print("whacha wanna do. Type a number or I'll have to crack a hole in you")
+        choice = input("1. add to list, 2. Return the calue at an index position 3. end program")
+        if choice == "1":
+            addtolist()
+        elif choice == "2":
+            indexvalues()
+
+        elif choice == "3":
+            break
+            
+
+def addtolist():
+    newitem = input("please type a integer!")
+    mylist.appened(int(newitem))
+    print(mylist)
+def indexvalue():
+    indexpos = input("what item number do you want to see")
+    print(mylist[int(indexpos)])
+def randomsearch():
+    print("here's a random value from your list")
+    print(mylist[random.randint(0,len(mylist)-1)])
+          
+
+if __name__=="__main__":
+    mainprogram()
