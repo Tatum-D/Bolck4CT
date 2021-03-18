@@ -1,3 +1,11 @@
+"""
+program goals:
+1. Get the input form the user
+2. covert the input into an INT
+3. add that input to a list
+4. pull values form specific index position
+"""
+
 #create function that will preform those actions above
 import random 
 mylist = []
@@ -6,14 +14,24 @@ def mainprogram():
         try:
             print("hows about we work with those fancy list things.")
             print("whacha wanna do. Type a number or I'll have to crack a hole in you")
-            choice = input("1. add to list, 2. Return the calue at an index position 3. random choice 4. end program")
+            choice = input("""1. add to list
+2. add a amount of numbers
+3. Return the calue at an index position
+4. print the contents of list
+5. random choice
+6. end program """)
             if choice == "1":
                 addtolist()
             elif choice == "2":
-                indexvalue()
-
+                addstuff()
             elif choice == "3":
+                indexvalue()
+            elif choice == "4":
+                print(mylist)
+            elif choice == "5":
                 randomsearch()
+                
+
             else:
                 break
         except:
@@ -23,13 +41,26 @@ def addtolist():
     newitem = input("please type a integer!")
     mylist.append(int(newitem))
     print(mylist)
+
+def addstuff():
+    print ("add a good amount of numbers")
+    numtoadd = input("how many integers do you wan to add")
+    numrange = input("how high would you like these number to go?")
+    for x in range (0, int(numtoadd)):
+        mylist.append(random.randit(0,int(numrange)))
+    print("your list is done")
 def indexvalue():
     indexpos = input("what item number do you want to see")
     print(mylist[int(indexpos)])
 def randomsearch():
     print("here's a random value from your list")
     print(mylist[random.randint(0,len(mylist)-1)])
-          
+def linearsearch():
+    print("we're going to search through this list")
+    searchitem = input("what are you looking for")
+    for x in range (len(mylist)):
+        if mylist[x] == int(searchitem):
+            print("your item is at index {}".format(x))
 
 if __name__=="__main__":
     mainprogram()
