@@ -19,7 +19,8 @@ def mainprogram():
 3. Return the calue at an index position
 4. print the contents of list
 5. random choice
-6. end program """)
+6. Linear search
+7. end program """)
             if choice == "1":
                 addtolist()
             elif choice == "2":
@@ -30,6 +31,8 @@ def mainprogram():
                 print(mylist)
             elif choice == "5":
                 randomsearch()
+            elif choice == "6":
+                linearsearch()
                 
 
             else:
@@ -46,8 +49,8 @@ def addstuff():
     print ("add a good amount of numbers")
     numtoadd = input("how many integers do you wan to add")
     numrange = input("how high would you like these number to go?")
-    for x in range (0, int(numtoadd)):
-        mylist.append(random.randit(0,int(numrange)))
+    for x in range(0, int(numtoadd)):
+        mylist.append(random.randint(0,int(numrange)))
     print("your list is done")
 def indexvalue():
     indexpos = input("what item number do you want to see")
