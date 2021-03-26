@@ -9,6 +9,7 @@ program goals:
 #create function that will preform those actions above
 import random 
 mylist = []
+uniquelist = []
 def mainprogram():
     while True:
         try:
@@ -17,10 +18,11 @@ def mainprogram():
             choice = input("""1. add to list
 2. add a amount of numbers
 3. Return the calue at an index position
-4. print the contents of list
+4. sort list
 5. random choice
 6. Linear search
-7. end program """)
+7. print lists
+8. end program """)
             if choice == "1":
                 addtolist()
             elif choice == "2":
@@ -28,11 +30,13 @@ def mainprogram():
             elif choice == "3":
                 indexvalue()
             elif choice == "4":
-                print(mylist)
+                sortlist(mylist)
             elif choice == "5":
                 randomsearch()
             elif choice == "6":
                 linearsearch()
+            elif choice == "7":
+                printlist
                 
 
             else:
@@ -45,6 +49,8 @@ def addtolist():
     mylist.append(int(newitem))
     print(mylist)
 
+
+
 def addstuff():
     print ("add a good amount of numbers")
     numtoadd = input("how many integers do you wan to add")
@@ -52,18 +58,55 @@ def addstuff():
     for x in range(0, int(numtoadd)):
         mylist.append(random.randint(0,int(numrange)))
     print("your list is done")
+
+
+def sortlist(mylist):
+    for x in mylist:
+        if x not in uniquelist:
+            uniquelist.append(x)
+    uniquelist.sort()
+    showme = input ("wanna see the new list/ Y/N")
+    if showme.lower() == "y":
+        print(uniquelist)
+
+
 def indexvalue():
     indexpos = input("what item number do you want to see")
     print(mylist[int(indexpos)])
+
+
 def randomsearch():
     print("here's a random value from your list")
     print(mylist[random.randint(0,len(mylist)-1)])
+
+
 def linearsearch():
     print("we're going to search through this list")
     searchitem = input("what are you looking for")
     for x in range (len(mylist)):
         if mylist[x] == int(searchitem):
             print("your item is at index {}".format(x))
+        print(indexcount)
 
-if __name__=="__main__":
-    mainprogram()
+
+def recursivebinarysearch(uniquelist, low, high, x):
+    if high >= low:
+        mid = (high + low) // 2
+
+        if uniquelist[mid] == x:
+            print("oh, what luck. your number is at position {}"format(mid))
+        elif uniquelist[mid] > x:
+            return recursivebinarysearch(uniquelist, low, mid - 1, x)
+        else:
+            return recursivebinarysearch(uniquelist, mid + 1, high, x)
+    
+    else:
+        print("your number isn't here.")
+    
+def printlist():
+    if len(uniquelist) == 0:
+        print(mylist)
+    else:
+        whichone = input("which list? sorted or unsorted")
+        if whichone.lower() == ("sorted")
+            print(uniquelist)
